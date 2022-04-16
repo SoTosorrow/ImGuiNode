@@ -2,15 +2,15 @@ cmake_minimum_required(VERSION 3.0)
 project(Node)
 
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_BUILD_TYPE Release)
+# set(CMAKE_BUILD_TYPE Release)
 
 add_subdirectory(extern/imgui)
-#add_subdirectory(extern/benchmark)
-
 
 set(MAIN
     main.cpp 
-    )
+    utils/node.cpp
+    utils/node_socket.cpp
+)
 
 set(current ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -29,7 +29,6 @@ find_package(OpenMP REQUIRED)
 include_directories(
     ${GLFW_INC}
     ${IMGUI_INC}
-    # ${BENCH_INC}
     # ${GLM_INC}
 )
 
