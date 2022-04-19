@@ -1,5 +1,7 @@
 #pragma once
 #include<vector>
+#include<string>
+#include <unordered_map>
 #include "imgui.h"
 #include "utils.hpp"
 #include "node_socket.hpp"
@@ -13,8 +15,11 @@ struct Node{
     const char* name;
     ElementType element_type = ElementType::ElementNode;
 
-    std::vector<NodeSocket*> input_sockets;
-    std::vector<NodeSocket*> output_sockets;
+    std::unordered_map<std::string,NodeSocket*> input_sockets;
+    std::unordered_map<std::string,NodeSocket*> output_sockets;
+
+    // std::vector<NodeSocket*> input_sockets;
+    // std::vector<NodeSocket*> output_sockets;
 
     Node(Context* _context,ImVec2 _pos, const char* _name);
     void draw();

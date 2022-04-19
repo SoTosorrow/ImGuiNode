@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0)
 project(Node)
 
 set(CMAKE_CXX_STANDARD 20)
-# set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_BUILD_TYPE Release)
 
 add_subdirectory(extern/imgui)
 
@@ -10,7 +10,10 @@ set(MAIN
     main.cpp 
     utils/node.cpp
     utils/node_socket.cpp
+    utils/node_link.cpp
+    utils/quad_tree.cpp
 )
+
 
 set(current ${CMAKE_CURRENT_SOURCE_DIR})
 
