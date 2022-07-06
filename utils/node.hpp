@@ -21,6 +21,7 @@ struct Node{
     // std::vector<NodeSocket*> input_sockets;
     // std::vector<NodeSocket*> output_sockets;
 
+    Node(Context* _context);
     Node(Context* _context,ImVec2 _pos, const char* _name);
     void draw();
 

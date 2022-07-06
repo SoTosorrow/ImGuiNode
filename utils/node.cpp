@@ -3,6 +3,9 @@
 #include "node.hpp"
 #include <iostream>
 
+// 委托构造函数
+Node::Node(Context* _context):Node(_context, ImVec2(300,300), "hello"){}
+
 Node::Node(Context* _context,ImVec2 _pos, const char* _name)
     :context(_context),pos(_pos),name(_name){
 
@@ -16,6 +19,8 @@ Node::Node(Context* _context,ImVec2 _pos, const char* _name)
 
 void Node::draw() {
     ImDrawList* draw_list = ImGui::GetWindowDrawList();
+    ImGui::SetCursorScreenPos(this->pos + this->context->viewport_move + ImVec2(5.0f,5.0f));
+    ImGui::Text(this->name);
     draw_list->AddRectFilled(
         this->pos + this->context->viewport_move, 
         this->pos + this->size + this->context->viewport_move, 

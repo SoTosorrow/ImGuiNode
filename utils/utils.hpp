@@ -1,6 +1,8 @@
 #pragma once
 
 #include "imgui.h"
+#include <string>
+#include <type_traits>
 
 static inline ImVec2 operator+(const ImVec2& lhs, const ImVec2& rhs) { return ImVec2(lhs.x + rhs.x, lhs.y + rhs.y); }
 static inline ImVec2 operator-(const ImVec2& lhs, const ImVec2& rhs) { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
@@ -48,3 +50,30 @@ template<typename T>
 concept ShowAble = requires(T a){
     a.Show();
 };
+
+// 转换字符串
+template<typename T>
+std::string toString(T a) noexcept{
+    if constexpr (std::is_same_v<T, std::string>)
+        return a;
+    else
+        return std::to_string(a);
+}
+
+
+
+template<typename T>
+constexpr T absolute(T arg) {
+   return arg < 0 ? -arg : arg;
+}
+
+template<typename T>
+constexpr auto precision_threshold = T(0.000001);
+
+template<typename T>
+constexpr bool float_close_enough(T a, T b) {
+    if constexpr (std::is_floating_point_v<T>) // << !!
+        return absolute(a - b) < precision_threshold<T>;
+    else
+        return a == b;
+}

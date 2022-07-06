@@ -20,9 +20,12 @@ struct Scene{
 
     Scene(){
         this->context = new Context();
-        this->nodes.insert({std::to_string(this->context->id), new Node{this->context,ImVec2(300,200),"hello"}});
-        this->nodes.insert({std::to_string(this->context->id), new Node{this->context,ImVec2(300,200),"hello"}});
-        this->nodes.insert({std::to_string(this->context->id), new Node{this->context,ImVec2(300,200),"hello"}});
+        this->nodes.insert({toString(this->context->id), new Node{this->context,ImVec2(300,200),"WTM"}});
+        // this->nodes.insert({toString(this->context->id), new Node{this->context,ImVec2(300,200),"hello"}});
+        // this->nodes.insert({toString(this->context->id), new Node{this->context,ImVec2(300,200),"hello"}});
+        this->nodes.insert({toString(this->context->id), new Node{this->context}});
+        this->nodes.insert({toString(this->context->id), new Node{this->context}});
+        this->nodes.insert({toString(this->context->id), new Node{this->context}});
         for (auto [a,a2] : this->nodes){
             std::cout<<a<<" "<<a2->id<<"\n";
             for (auto [b,b2] : a2->input_sockets){
